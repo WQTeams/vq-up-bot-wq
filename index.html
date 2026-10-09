@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vq Up Bot wq</title>
+  <style>
+    :root {
+      --bg: #070b16;
+      --bg2: #101827;
+      --panel: rgba(17, 24, 39, 0.9);
+      --panel-2: rgba(15, 23, 42, 0.9);
+      --text: #edf6ff;
+      --muted: #9fb1cc;
+      --primary: #59f0c9;
+      --accent: #7c5cff;
+      --gold: #f7c948;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 18px 44px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124,92,255,0.25), transparent 22%),
+        radial-gradient(circle at top right, rgba(89,240,201,0.18), transparent 30%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 11, 22, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 74px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+    .brand-mark {
+      width: 38px; height: 38px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 12px;
+      color: #051117;
+      font-weight: 900;
+      box-shadow: var(--shadow);
+    }
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), #7fe7d4);
+      color: #041018;
+      font-weight: 800;
+    }
+
+    .hero {
+      padding: 72px 0 36px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      color: var(--primary);
+      background: rgba(89,240,201,0.08);
+      border: 1px solid rgba(89,240,201,0.2);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 680px;
+      margin: 20px 0 28px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #63d7ff);
+      color: #051017;
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.02);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .stats strong {
+      display: block;
+      color: var(--text);
+      font-size: 1.28rem;
+      margin-bottom: 4px;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+    .showcase {
+      position: relative;
+      padding: 22px;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, rgba(89,240,201,0.1), transparent 30%), rgba(15,23,42,0.9);
+    }
+    .showcase::before {
+      content: "";
+      position: absolute;
+      width: 220px; height: 220px;
+      right: -30px; top: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,92,255,0.45), transparent 68%);
+      filter: blur(30px);
+    }
+    .skin-box {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(11,17,29,0.8), rgba(17,24,39,0.9));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .skin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+    .drop {
+      width: 100%;
+      height: 230px;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, rgba(89,240,201,0.5), rgba(124,92,255,0.5)),
+        linear-gradient(120deg, #0b1120, #111827);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .drop::before {
+      content: "";
+      position: absolute;
+      inset: 26px 40px 18px 40px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+      transform: skewY(-9deg) rotate(-12deg);
+      box-shadow: inset 0 0 30px rgba(255,255,255,0.08);
+    }
+    .skin-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.42rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      background: rgba(247,201,73,0.1);
+      color: var(--gold);
+      border: 1px solid rgba(247,201,73,0.22);
+    }
+    .price {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 1.7rem;
+      font-weight: 900;
+      margin-top: 14px;
+    }
+    .price small {
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding: 22px 0 12px;
+    }
+    .section-title {
+      margin-bottom: 16px;
+    }
+    .section-title h2 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .feature-card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(17, 24, 39, 0.75);
+    }
+    .icon {
+      width: 52px; height: 52px;
+      display: grid; place-items: center;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, rgba(89,240,201,0.18), rgba(124,92,255,0.18));
+      border: 1px solid rgba(89,240,201,0.22);
+    }
+    .feature-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .price-card {
+      position: relative;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: rgba(17, 24, 39, 0.8);
+    }
+    .price-card.featured {
+      border-color: rgba(89,240,201,0.32);
+      background: linear-gradient(180deg, rgba(89,240,201,0.08), rgba(17,24,39,0.9));
+    }
+    .best {
+      position: absolute;
+      top: 16px; right: 18px;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #031217;
+      background: var(--primary);
+    }
+    .price-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+    .amount {
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+      margin: 14px 0;
+    }
+    .amount span {
+      font-size: 1rem;
+      opacity: 0.75;
+      margin-left: 8px;
+    }
+    .price-card ul {
+      padding-left: 18px;
+      color: var(--muted);
+      margin: 18px 0 22px;
+      line-height: 2;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .faq-item {
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(17, 24, 39, 0.8);
+      border: 1px solid var(--border);
+    }
+    .faq-item h4 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cta-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 28px 24px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(89,240,201,0.08), rgba(124,92,255,0.10));
+      border: 1px solid rgba(89,240,201,0.24);
+      margin-top: 14px;
+    }
+    .cta-box h3 {
+      margin: 0 0 6px;
+      font-size: clamp(1.9rem, 3vw, 3rem);
+      letter-spacing: -0.06em;
+    }
+    .cta-box p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 20px 0 40px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      margin-top: 18px;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid, .feature-grid, .pricing-grid, .faq-grid, .cta-box {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .nav { height: auto; padding: 14px 0; }
+      .nav-btn { display: none; }
+      .actions { flex-direction: column; }
+      .btn { width: 100%; }
+      h1 { font-size: 2.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <span class="brand-mark">V</span>
+        <span>vq Up Bot wq</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="https://t.me/seed5558" class="nav-btn" target="_blank" rel="noreferrer">Telegram</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Standoff 2 skin upgrades</span>
+          <h1>Upgrade your look. Upgrade your status.</h1>
+          <p class="lead">
+            Premium skin upgrades and custom support for players who want a sharper, more unique in-game presence.
+            Top-ups are handled through Telegram: <strong>@seed5558</strong>.
+          </p>
+
+          <div class="actions">
+            <a href="#pricing" class="btn btn-primary">View Packages</a>
+            <a href="#contact" class="btn btn-secondary">Contact Us</a>
+          </div>
+
+          <div class="stats">
+            <div>
+              <strong>Fast</strong>
+              Response
+            </div>
+            <div>
+              <strong>Custom</strong>
+              Offers
+            </div>
+            <div>
+              <strong>StandKnife</strong>
+              Currency
+            </div>
+          </div>
+        </div>
+
+        <div class="panel showcase">
+          <div class="skin-box">
+            <div class="skin-header">
+              <span>Featured upgrade</span>
+              <span>Limited</span>
+            </div>
+            <div class="drop"></div>
+            <div class="skin-meta">
+              <div>
+                <div style="color: var(--muted); font-size: 0.8rem;">Legendary collection</div>
+                <div style="font-weight: 800;">Shadow Edition</div>
+              </div>
+              <span class="tag">Top Pick</span>
+            </div>
+            <div class="price"><small>from</small> $59</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Why players choose us</h2>
+          <p>Clean service, direct communication, and premium support.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon">⚡</div>
+            <h3>Fast support</h3>
+            <p>Quick replies and a smooth process from first contact to completion.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">🎯</div>
+            <h3>Curated selection</h3>
+            <p>Premium skins and upgrade options tailored to player preference.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">🛡️</div>
+            <h3>Trusted workflow</h3>
+            <p>Clear communication, transparent handling, and consistent service quality.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-title">
+          <h2>Packages</h2>
+          <p>Select the setup that matches your goals.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Starter</h3>
+            <div class="amount">$29<span>USD</span></div>
+            <ul>
+              <li>Basic upgrade package</li>
+              <li>Fast response</li>
+              <li>Personalized recommendation</li>
+            </ul>
+            <a href="#contact" class="btn btn-secondary">Choose</a>
+          </article>
+
+          <article class="price-card featured">
+            <span class="best">Popular</span>
+            <h3>Premium</h3>
+            <div class="amount">$59<span>USD</span></div>
+            <ul>
+              <li>Premium skin support</li>
+              <li>Priority handling</li>
+              <li>Advanced recommendation</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary">Choose</a>
+          </article>
+
+          <article class="price-card">
+            <h3>Elite</h3>
+            <div class="amount">$99<span>USD</span></div>
+            <ul>
+              <li>Custom package</li>
+              <li>Expert support</li>
+              <li>Priority processing</li>
+            </ul>
+            <a href="#contact" class="btn btn-secondary">Choose</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="section-title">
+          <h2>FAQ</h2>
+          <p>Quick answers before contacting us.</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h4>How do I order?</h4>
+            <p>Pick a package and contact us through Telegram to begin your request.</p>
+          </article>
+
+          <article class="faq-item">
+            <h4>Do you support custom requests?</h4>
+            <p>Yes. We can assist with recommendations based on your preferred style and needs.</p>
+          </article>
+
+          <article class="faq-item">
+            <h4>What currency is used?</h4>
+            <p>Players use in-game StandKnife currency. Top-ups and support are handled by Telegram.</p>
+          </article>
+
+          <article class="faq-item">
+            <h4>Can I contact you directly?</h4>
+            <p>Yes — contact us on Telegram at <strong>@seed5558</strong>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h3>Ready to get started?</h3>
+            <p>Reach out on Telegram for a custom offer and quick support.</p>
+          </div>
+          <a href="https://t.me/seed5558" class="btn btn-primary" target="_blank" rel="noreferrer">Contact Telegram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 vq Up Bot wq</div>
+      <div>Standoff 2 premium skins • StandKnife currency support</div>
+    </div>
+  </footer>
+</body>
+</html>
