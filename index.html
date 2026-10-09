@@ -136,6 +136,7 @@
       font-weight: 800;
       transition: transform 0.18s ease;
       cursor: pointer;
+      text-decoration: none;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
@@ -446,6 +447,27 @@
       flex-wrap: wrap;
     }
 
+    .tier-buttons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .tier-btn {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      cursor: pointer;
+      font-weight: 800;
+      flex: 1 1 130px;
+    }
+    .tier-btn.active {
+      background: rgba(95,231,193,0.08);
+      border-color: rgba(95,231,193,0.32);
+    }
+
     .catalog {
       display: grid;
       grid-template-columns: repeat(4, minmax(0,1fr));
@@ -732,7 +754,7 @@
       <div class="container">
         <div class="section-title">
           <h2>Система апгрейда скинов</h2>
-          <p>Выберите оружие и стиль, затем отправьте запрос в Telegram с выбранным вариантом.</p>
+          <p>Выберите оружие, скин и очередной уровень улучшения. Улучшение идёт за StandKnife, без реальных денег.</p>
         </div>
 
         <div class="upgrade-box">
@@ -746,7 +768,7 @@
               <option value="knife">Knife</option>
             </select>
 
-            <label for="skinList">Доступные варианты</label>
+            <label for="skinList">Скины</label>
             <div id="skinList" class="skin-option-list"></div>
           </div>
 
@@ -755,15 +777,19 @@
             <div class="preview-info">
               <div class="title">
                 <h3 id="previewName">Shadow Viper</h3>
-                <span class="preview-price" id="previewPrice">$79</span>
+                <span class="preview-price" id="previewPrice">0 StandKnife</span>
               </div>
               <div class="preview-tags">
                 <span id="previewWeapon">AK-47</span>
-                <span id="previewRarity">Legendary</span>
+                <span id="previewTier">Rare</span>
                 <span id="previewType">Skin pack</span>
               </div>
+
+              <div class="tier-buttons" id="tierButtons"></div>
+
               <div class="upgrade-actions">
-                <a href="https://t.me/seed5558" class="btn btn-primary" target="_blank" rel="noreferrer">Заказать через Telegram</a>
+                <button class="btn btn-primary" id="upgradeBtn">Подтвердить улучшение</button>
+                <a href="https://t.me/seed5558" class="btn btn-secondary" target="_blank" rel="noreferrer">Telegram</a>
               </div>
             </div>
           </div>
@@ -785,7 +811,7 @@
               <p class="skin-name">Astra</p>
               <span class="skin-rarity">Rare</span>
               <div class="skin-footer">
-                <div class="skin-cost">$19</div>
+                <div class="skin-cost">0 SC</div>
                 <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
               </div>
             </div>
@@ -797,7 +823,7 @@
               <p class="skin-name">Dread</p>
               <span class="skin-rarity">Epic</span>
               <div class="skin-footer">
-                <div class="skin-cost">$29</div>
+                <div class="skin-cost">2500 SC</div>
                 <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
               </div>
             </div>
@@ -809,7 +835,7 @@
               <p class="skin-name">Obsidian</p>
               <span class="skin-rarity">Legendary</span>
               <div class="skin-footer">
-                <div class="skin-cost">$49</div>
+                <div class="skin-cost">6500 SC</div>
                 <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
               </div>
             </div>
@@ -821,7 +847,7 @@
               <p class="skin-name">Nightfall</p>
               <span class="skin-rarity">Mythic</span>
               <div class="skin-footer">
-                <div class="skin-cost">$79</div>
+                <div class="skin-cost">12000 SC</div>
                 <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
               </div>
             </div>
@@ -833,7 +859,7 @@
               <p class="skin-name">Redline</p>
               <span class="skin-rarity">Epic</span>
               <div class="skin-footer">
-                <div class="skin-cost">$39</div>
+                <div class="skin-cost">3000 SC</div>
                 <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
               </div>
             </div>
@@ -845,7 +871,7 @@
               <p class="skin-name">Frost</p>
               <span class="skin-rarity">Rare</span>
               <div class="skin-footer">
-                <div class="skin-cost">$22</div>
+                <div class="skin-cost">500 SC</div>
                 <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
               </div>
             </div>
@@ -857,7 +883,7 @@
               <p class="skin-name">Vortex</p>
               <span class="skin-rarity">Legendary</span>
               <div class="skin-footer">
-                <div class="skin-cost">$54</div>
+                <div class="skin-cost">7000 SC</div>
                 <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
               </div>
             </div>
@@ -869,7 +895,7 @@
               <p class="skin-name">Phantom</p>
               <span class="skin-rarity">Mythic</span>
               <div class="skin-footer">
-                <div class="skin-cost">$89</div>
+                <div class="skin-cost">14000 SC</div>
                 <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
               </div>
             </div>
@@ -959,39 +985,6 @@
   </footer>
 
   <script>
-    const weaponOptions = {
-      ak47: [
-        { name: 'Shadow Viper', rarity: 'Legendary', type: 'Skin pack', price: '$79' },
-        { name: 'Redline', rarity: 'Epic', type: 'Skin pack', price: '$39' },
-        { name: 'Obsidian', rarity: 'Legendary', type: 'Skin pack', price: '$49' },
-        { name: 'Astra', rarity: 'Rare', type: 'Skin pack', price: '$19' }
-      ],
-      m4a1: [
-        { name: 'Nightfall', rarity: 'Mythic', type: 'Skin pack', price: '$79' },
-        { name: 'Frost', rarity: 'Rare', type: 'Skin pack', price: '$22' },
-        { name: 'Dread', rarity: 'Epic', type: 'Skin pack', price: '$29' },
-        { name: 'Phantom', rarity: 'Mythic', type: 'Skin pack', price: '$89' }
-      ],
-      deagle: [
-        { name: 'Vortex', rarity: 'Legendary', type: 'Skin pack', price: '$54' },
-        { name: 'Astra', rarity: 'Rare', type: 'Skin pack', price: '$19' },
-        { name: 'Redline', rarity: 'Epic', type: 'Skin pack', price: '$39' },
-        { name: 'Obsidian', rarity: 'Legendary', type: 'Skin pack', price: '$49' }
-      ],
-      usp: [
-        { name: 'Frost', rarity: 'Rare', type: 'Skin pack', price: '$22' },
-        { name: 'Phantom', rarity: 'Mythic', type: 'Skin pack', price: '$89' },
-        { name: 'Nightfall', rarity: 'Mythic', type: 'Skin pack', price: '$79' },
-        { name: 'Dread', rarity: 'Epic', type: 'Skin pack', price: '$29' }
-      ],
-      knife: [
-        { name: 'Shadow Viper', rarity: 'Legendary', type: 'Knife skin', price: '$79' },
-        { name: 'Obsidian', rarity: 'Legendary', type: 'Knife skin', price: '$49' },
-        { name: 'Vortex', rarity: 'Legendary', type: 'Knife skin', price: '$54' },
-        { name: 'Nightfall', rarity: 'Mythic', type: 'Knife skin', price: '$89' }
-      ]
-    };
-
     const weaponNames = {
       ak47: 'AK-47',
       m4a1: 'M4A1-S',
@@ -1000,48 +993,236 @@
       knife: 'Knife'
     };
 
+    const weaponOptions = {
+      ak47: [
+        { name: 'Shadow Viper', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2500 },
+            { tier: 'Legendary', cost: 6500 },
+            { tier: 'Mythic', cost: 12000 }
+          ] },
+        { name: 'Redline', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 3000 },
+            { tier: 'Legendary', cost: 7000 },
+            { tier: 'Mythic', cost: 13000 }
+          ] },
+        { name: 'Obsidian', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2800 },
+            { tier: 'Legendary', cost: 6800 },
+            { tier: 'Mythic', cost: 12500 }
+          ] },
+        { name: 'Astra', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2200 },
+            { tier: 'Legendary', cost: 5000 },
+            { tier: 'Mythic', cost: 10000 }
+          ] }
+      ],
+      m4a1: [
+        { name: 'Nightfall', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2600 },
+            { tier: 'Legendary', cost: 6800 },
+            { tier: 'Mythic', cost: 12500 }
+          ] },
+        { name: 'Frost', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2000 },
+            { tier: 'Legendary', cost: 4800 },
+            { tier: 'Mythic', cost: 9600 }
+          ] },
+        { name: 'Dread', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2400 },
+            { tier: 'Legendary', cost: 6200 },
+            { tier: 'Mythic', cost: 11800 }
+          ] },
+        { name: 'Phantom', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 3200 },
+            { tier: 'Legendary', cost: 7600 },
+            { tier: 'Mythic', cost: 13500 }
+          ] }
+      ],
+      deagle: [
+        { name: 'Vortex', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 3000 },
+            { tier: 'Legendary', cost: 7200 },
+            { tier: 'Mythic', cost: 13200 }
+          ] },
+        { name: 'Redline', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2700 },
+            { tier: 'Legendary', cost: 6500 },
+            { tier: 'Mythic', cost: 12000 }
+          ] },
+        { name: 'Obsidian', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2600 },
+            { tier: 'Legendary', cost: 6400 },
+            { tier: 'Mythic', cost: 11900 }
+          ] },
+        { name: 'Astra', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2100 },
+            { tier: 'Legendary', cost: 5200 },
+            { tier: 'Mythic', cost: 9800 }
+          ] }
+      ],
+      usp: [
+        { name: 'Frost', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2000 },
+            { tier: 'Legendary', cost: 5000 },
+            { tier: 'Mythic', cost: 9800 }
+          ] },
+        { name: 'Phantom', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 3400 },
+            { tier: 'Legendary', cost: 7800 },
+            { tier: 'Mythic', cost: 14000 }
+          ] },
+        { name: 'Nightfall', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2800 },
+            { tier: 'Legendary', cost: 6700 },
+            { tier: 'Mythic', cost: 12400 }
+          ] },
+        { name: 'Dread', type: 'Skin pack', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2300 },
+            { tier: 'Legendary', cost: 6100 },
+            { tier: 'Mythic', cost: 11200 }
+          ] }
+      ],
+      knife: [
+        { name: 'Shadow Viper', type: 'Knife skin', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2600 },
+            { tier: 'Legendary', cost: 6800 },
+            { tier: 'Mythic', cost: 12200 }
+          ] },
+        { name: 'Obsidian', type: 'Knife skin', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 3000 },
+            { tier: 'Legendary', cost: 7200 },
+            { tier: 'Mythic', cost: 13000 }
+          ] },
+        { name: 'Vortex', type: 'Knife skin', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 2900 },
+            { tier: 'Legendary', cost: 7000 },
+            { tier: 'Mythic', cost: 12800 }
+          ] },
+        { name: 'Nightfall', type: 'Knife skin', currentTier: 'Rare', levels: [
+            { tier: 'Rare', cost: 0 },
+            { tier: 'Epic', cost: 3400 },
+            { tier: 'Legendary', cost: 7900 },
+            { tier: 'Mythic', cost: 14500 }
+          ] }
+      ]
+    };
+
     const weaponSelect = document.getElementById('weaponSelect');
     const skinList = document.getElementById('skinList');
+    const tierButtons = document.getElementById('tierButtons');
     const previewName = document.getElementById('previewName');
     const previewPrice = document.getElementById('previewPrice');
     const previewWeapon = document.getElementById('previewWeapon');
-    const previewRarity = document.getElementById('previewRarity');
+    const previewTier = document.getElementById('previewTier');
     const previewType = document.getElementById('previewType');
+    const upgradeBtn = document.getElementById('upgradeBtn');
 
-    function renderOptions() {
-      const key = weaponSelect.value;
-      const items = weaponOptions[key] || weaponOptions.ak47;
+    let selectedSkinIndex = 0;
+    let selectedTierIndex = 0;
+
+    function getCurrentSkinList() {
+      return weaponOptions[weaponSelect.value] || weaponOptions.ak47;
+    }
+
+    function renderSkinOptions() {
+      const skins = getCurrentSkinList();
       skinList.innerHTML = '';
 
-      items.forEach((item, index) => {
+      skins.forEach((skin, index) => {
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'skin-option' + (index === 0 ? ' active' : '');
+        btn.className = 'skin-option' + (index === selectedSkinIndex ? ' active' : '');
         btn.innerHTML = `
-          <span class="name">${item.name}</span>
-          <span class="meta"><span>${item.rarity}</span><span>${item.price}</span></span>
+          <span class="name">${skin.name}</span>
+          <span class="meta"><span>${skin.currentTier}</span><span>${skin.levels[skin.levels.length - 1].cost} SC</span></span>
         `;
         btn.addEventListener('click', () => {
-          document.querySelectorAll('.skin-option').forEach(node => node.classList.remove('active'));
-          btn.classList.add('active');
-          updatePreview(item);
+          selectedSkinIndex = index;
+          selectedTierIndex = 0;
+          renderSkinOptions();
+          renderTierButtons();
+          updatePreview();
         });
         skinList.appendChild(btn);
       });
-
-      updatePreview(items[0]);
     }
 
-    function updatePreview(item) {
-      previewName.textContent = item.name;
-      previewPrice.textContent = item.price;
+    function renderTierButtons() {
+      const skins = getCurrentSkinList();
+      const skin = skins[selectedSkinIndex];
+      tierButtons.innerHTML = '';
+
+      skin.levels.forEach((level, index) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'tier-btn' + (index === selectedTierIndex ? ' active' : '');
+        btn.textContent = `${level.tier} · ${level.cost} SC`;
+        btn.addEventListener('click', () => {
+          selectedTierIndex = index;
+          renderTierButtons();
+          updatePreview();
+        });
+        tierButtons.appendChild(btn);
+      });
+    }
+
+    function updatePreview() {
+      const skins = getCurrentSkinList();
+      const skin = skins[selectedSkinIndex];
+      const selectedLevel = skin.levels[selectedTierIndex];
+
+      previewName.textContent = skin.name;
+      previewPrice.textContent = `${selectedLevel.cost} StandKnife`;
       previewWeapon.textContent = weaponNames[weaponSelect.value];
-      previewRarity.textContent = item.rarity;
-      previewType.textContent = item.type;
+      previewTier.textContent = selectedLevel.tier;
+      previewType.textContent = skin.type;
+
+      const nextIndex = selectedTierIndex + 1;
+      const nextTier = skin.levels[nextIndex];
+      upgradeBtn.textContent = nextTier ? `Улучшить до ${nextTier.tier} (${nextTier.cost} SC)` : 'Максимальный уровень';
+      upgradeBtn.disabled = !nextTier;
+      upgradeBtn.style.opacity = nextTier ? '1' : '0.6';
     }
 
-    weaponSelect.addEventListener('change', renderOptions);
-    renderOptions();
+    weaponSelect.addEventListener('change', () => {
+      selectedSkinIndex = 0;
+      selectedTierIndex = 0;
+      renderSkinOptions();
+      renderTierButtons();
+      updatePreview();
+    });
+
+    upgradeBtn.addEventListener('click', () => {
+      const skins = getCurrentSkinList();
+      const skin = skins[selectedSkinIndex];
+      const nextTier = skin.levels[selectedTierIndex + 1];
+      if (!nextTier) return;
+      const message = `${encodeURIComponent(`Здравствуйте! Хочу улучшить ${skin.name} (${weaponNames[weaponSelect.value]}) до уровня ${nextTier.tier}. Стоимость: ${nextTier.cost} StandKnife.`)}`;
+      window.open(`https://t.me/seed5558?text=${message}`, '_blank');
+    });
+
+    renderSkinOptions();
+    renderTierButtons();
+    updatePreview();
   </script>
 </body>
 </html>
