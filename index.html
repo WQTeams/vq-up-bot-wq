@@ -6,17 +6,17 @@
   <title>vq Up Bot wq</title>
   <style>
     :root {
-      --bg: #070b16;
-      --bg2: #101827;
+      --bg: #0b0f19;
+      --bg2: #111827;
       --panel: rgba(17, 24, 39, 0.9);
-      --panel-2: rgba(15, 23, 42, 0.9);
-      --text: #edf6ff;
-      --muted: #9fb1cc;
-      --primary: #59f0c9;
+      --text: #edf4ff;
+      --muted: #a6b3c9;
+      --primary: #5fe7c1;
       --accent: #7c5cff;
-      --gold: #f7c948;
+      --gold: #f7d76b;
+      --danger: #ff7777;
       --border: rgba(255,255,255,0.08);
-      --shadow: 0 18px 44px rgba(0,0,0,0.35);
+      --shadow: 0 20px 40px rgba(0,0,0,0.35);
     }
 
     * { box-sizing: border-box; }
@@ -25,23 +25,21 @@
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(124,92,255,0.25), transparent 22%),
-        radial-gradient(circle at top right, rgba(89,240,201,0.18), transparent 30%),
+        radial-gradient(circle at top left, rgba(124,92,255,0.25), transparent 20%),
+        radial-gradient(circle at top right, rgba(95,231,193,0.18), transparent 25%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       color: var(--text);
       line-height: 1.6;
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
-    .container {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-    }
+    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
     header {
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(7, 11, 22, 0.75);
+      z-index: 20;
+      background: rgba(11, 15, 25, 0.78);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -49,7 +47,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 74px;
+      min-height: 76px;
+      gap: 18px;
     }
     .brand {
       display: flex;
@@ -63,9 +62,9 @@
     .brand-mark {
       width: 38px; height: 38px;
       display: grid; place-items: center;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
       border-radius: 12px;
-      color: #051117;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #08151a;
       font-weight: 900;
       box-shadow: var(--shadow);
     }
@@ -82,18 +81,18 @@
       justify-content: center;
       padding: 0.8rem 1.2rem;
       border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), #7fe7d4);
-      color: #041018;
       font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), #7fe7d4);
+      color: #051317;
     }
 
     .hero {
-      padding: 72px 0 36px;
+      padding: 72px 0 28px;
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 30px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
       align-items: center;
     }
     .eyebrow {
@@ -101,25 +100,25 @@
       margin-bottom: 14px;
       padding: 0.45rem 0.8rem;
       border-radius: 999px;
+      background: rgba(95,231,193,0.12);
+      border: 1px solid rgba(95,231,193,0.2);
       color: var(--primary);
-      background: rgba(89,240,201,0.08);
-      border: 1px solid rgba(89,240,201,0.2);
       font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
     }
     h1 {
       margin: 0;
       font-size: clamp(2.7rem, 5vw, 5rem);
-      line-height: 0.95;
+      line-height: 0.96;
       letter-spacing: -0.07em;
     }
     .lead {
       color: var(--muted);
-      font-size: 1.05rem;
+      margin: 18px 0 28px;
       max-width: 680px;
-      margin: 20px 0 28px;
+      font-size: 1.05rem;
     }
     .actions {
       display: flex;
@@ -131,16 +130,16 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem 1.5rem;
+      padding: 1rem 1.4rem;
       border-radius: 14px;
-      font-weight: 800;
       border: 1px solid transparent;
+      font-weight: 800;
       transition: transform 0.18s ease;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #63d7ff);
-      color: #051017;
+      background: linear-gradient(135deg, var(--primary), #6fe3ff);
+      color: #051317;
     }
     .btn-secondary {
       background: rgba(255,255,255,0.02);
@@ -150,45 +149,45 @@
     .stats {
       display: flex;
       flex-wrap: wrap;
-      gap: 32px;
+      gap: 28px;
       color: var(--muted);
       font-size: 0.95rem;
     }
     .stats strong {
       display: block;
       color: var(--text);
-      font-size: 1.28rem;
+      font-size: 1.2rem;
       margin-bottom: 4px;
     }
 
     .panel {
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border: 1px solid var(--border);
-      border-radius: 28px;
+      border-radius: 26px;
       box-shadow: var(--shadow);
     }
     .showcase {
       position: relative;
       padding: 22px;
+      background: radial-gradient(circle at top left, rgba(124,92,255,0.14), transparent 30%), rgba(17,24,39,0.9);
       overflow: hidden;
-      background: radial-gradient(circle at top left, rgba(89,240,201,0.1), transparent 30%), rgba(15,23,42,0.9);
     }
     .showcase::before {
       content: "";
       position: absolute;
-      width: 220px; height: 220px;
-      right: -30px; top: -20px;
+      width: 240px; height: 240px;
+      top: -20px; right: -30px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,92,255,0.45), transparent 68%);
-      filter: blur(30px);
+      background: radial-gradient(circle, rgba(124,92,255,0.5), transparent 68%);
+      filter: blur(28px);
     }
-    .skin-box {
+    .skin-card {
       position: relative;
       z-index: 1;
-      background: linear-gradient(180deg, rgba(11,17,29,0.8), rgba(17,24,39,0.9));
+      padding: 18px;
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 18px;
+      background: linear-gradient(180deg, rgba(11,17,29,0.8), rgba(17,24,39,0.9));
     }
     .skin-header {
       display: flex;
@@ -198,21 +197,21 @@
       font-size: 0.8rem;
       margin-bottom: 16px;
     }
-    .drop {
+    .skin-image {
       width: 100%;
-      height: 230px;
+      height: 232px;
       border-radius: 18px;
       background:
-        linear-gradient(135deg, rgba(89,240,201,0.5), rgba(124,92,255,0.5)),
+        linear-gradient(135deg, rgba(95,231,193,0.46), rgba(124,92,255,0.46)),
         linear-gradient(120deg, #0b1120, #111827);
       border: 1px solid rgba(255,255,255,0.08);
       position: relative;
       overflow: hidden;
     }
-    .drop::before {
+    .skin-image::before {
       content: "";
       position: absolute;
-      inset: 26px 40px 18px 40px;
+      inset: 26px 44px 14px 44px;
       border-radius: 18px;
       background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
       transform: skewY(-9deg) rotate(-12deg);
@@ -228,36 +227,34 @@
     .tag {
       display: inline-flex;
       align-items: center;
-      padding: 0.42rem 0.7rem;
+      padding: 0.38rem 0.7rem;
       border-radius: 999px;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 800;
-      background: rgba(247,201,73,0.1);
+      background: rgba(247,215,107,0.12);
+      border: 1px solid rgba(247,215,107,0.2);
       color: var(--gold);
-      border: 1px solid rgba(247,201,73,0.22);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 800;
     }
     .price {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 1.7rem;
-      font-weight: 900;
+      gap: 8px;
       margin-top: 14px;
+      font-size: 1.75rem;
+      font-weight: 900;
     }
     .price small {
       color: var(--gold);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    section {
-      padding: 22px 0 12px;
-    }
+    section { padding: 32px 0 8px; }
     .section-title {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
     .section-title h2 {
       margin: 0 0 8px;
@@ -271,122 +268,181 @@
 
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 18px;
-      margin-top: 18px;
     }
     .feature-card {
       padding: 24px;
+      background: rgba(17,24,39,0.8);
       border: 1px solid var(--border);
       border-radius: 20px;
-      background: rgba(17, 24, 39, 0.75);
     }
-    .icon {
+    .feature-icon {
       width: 52px; height: 52px;
       display: grid; place-items: center;
       border-radius: 14px;
       margin-bottom: 18px;
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, rgba(89,240,201,0.18), rgba(124,92,255,0.18));
-      border: 1px solid rgba(89,240,201,0.22);
+      font-size: 1.45rem;
+      background: linear-gradient(135deg, rgba(95,231,193,0.16), rgba(124,92,255,0.18));
+      border: 1px solid rgba(95,231,193,0.2);
     }
     .feature-card h3 {
       margin: 0 0 8px;
-      font-size: 1.2rem;
+      font-size: 1.18rem;
     }
     .feature-card p {
       margin: 0;
       color: var(--muted);
     }
 
-    .pricing-grid {
+    .catalog {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, minmax(0,1fr));
       gap: 18px;
       margin-top: 18px;
     }
-    .price-card {
-      position: relative;
-      padding: 24px;
+    .skin-item {
+      background: rgba(17,24,39,0.82);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(17, 24, 39, 0.8);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.18s ease, border-color 0.18s ease;
     }
-    .price-card.featured {
-      border-color: rgba(89,240,201,0.32);
-      background: linear-gradient(180deg, rgba(89,240,201,0.08), rgba(17,24,39,0.9));
+    .skin-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(95,231,193,0.24);
     }
-    .best {
+    .skin-item-visual {
+      height: 180px;
+      background:
+        linear-gradient(135deg, rgba(95,231,193,0.15), rgba(124,92,255,0.15)),
+        linear-gradient(120deg, #0c1320, #0d1727);
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .skin-item-visual::before {
+      content: "";
       position: absolute;
-      top: 16px; right: 18px;
-      padding: 0.35rem 0.7rem;
+      inset: 20px 28px 18px 28px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+      transform: skewY(-8deg) rotate(-12deg);
+    }
+    .skin-item-body {
+      padding: 18px 16px 16px;
+    }
+    .skin-name {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin: 0 0 6px;
+    }
+    .skin-rarity {
+      display: inline-block;
+      padding: 0.35rem 0.6rem;
       border-radius: 999px;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #031217;
-      background: var(--primary);
-    }
-    .price-card h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 1.4rem;
-    }
-    .amount {
-      font-size: 2.4rem;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      margin: 14px 0;
-    }
-    .amount span {
-      font-size: 1rem;
-      opacity: 0.75;
-      margin-left: 8px;
-    }
-    .price-card ul {
-      padding-left: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
       color: var(--muted);
-      margin: 18px 0 22px;
-      line-height: 2;
+    }
+    .skin-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .skin-cost {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), #6fe3ff);
+      color: #051317;
+      font-weight: 800;
+      font-size: 0.8rem;
     }
 
-    .faq-grid {
+    .steps {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 18px;
       margin-top: 18px;
     }
-    .faq-item {
-      padding: 20px;
-      border-radius: 18px;
-      background: rgba(17, 24, 39, 0.8);
+    .step-card {
+      padding: 24px;
+      background: rgba(17,24,39,0.8);
       border: 1px solid var(--border);
+      border-radius: 18px;
     }
-    .faq-item h4 {
+    .step-card .num {
+      width: 36px; height: 36px;
+      display: grid; place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #09141a;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+    .step-card h3 {
       margin: 0 0 8px;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
     }
-    .faq-item p {
+    .step-card p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .info-box {
+      padding: 24px;
+      background: rgba(17,24,39,0.8);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+    .info-box h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+    .info-box p, .info-box li {
+      color: var(--muted);
+    }
+    .info-box ul {
+      padding-left: 18px;
+      margin: 0;
+      line-height: 1.9;
     }
 
     .cta-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 18px;
       padding: 28px 24px;
       border-radius: 26px;
-      background: linear-gradient(135deg, rgba(89,240,201,0.08), rgba(124,92,255,0.10));
-      border: 1px solid rgba(89,240,201,0.24);
-      margin-top: 14px;
+      background: linear-gradient(135deg, rgba(95,231,193,0.08), rgba(124,92,255,0.1));
+      border: 1px solid rgba(95,231,193,0.22);
+      margin-top: 20px;
     }
     .cta-box h3 {
-      margin: 0 0 6px;
-      font-size: clamp(1.9rem, 3vw, 3rem);
-      letter-spacing: -0.06em;
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      letter-spacing: -0.05em;
     }
     .cta-box p {
       margin: 0;
@@ -394,10 +450,10 @@
     }
 
     footer {
-      padding: 20px 0 40px;
+      margin-top: 18px;
+      padding: 20px 0 46px;
       border-top: 1px solid var(--border);
       color: var(--muted);
-      margin-top: 18px;
     }
     .footer-row {
       display: flex;
@@ -406,20 +462,30 @@
       flex-wrap: wrap;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid, .feature-grid, .pricing-grid, .faq-grid, .cta-box {
-        grid-template-columns: 1fr;
-        display: grid;
+    @media (max-width: 1000px) {
+      .hero-grid,
+      .feature-grid,
+      .steps,
+      .info-grid,
+      .catalog {
+        grid-template-columns: repeat(2, minmax(0,1fr));
       }
       .nav-links { display: none; }
     }
 
-    @media (max-width: 640px) {
-      .nav { height: auto; padding: 14px 0; }
-      .nav-btn { display: none; }
+    @media (max-width: 700px) {
+      .hero-grid,
+      .feature-grid,
+      .steps,
+      .info-grid,
+      .catalog {
+        grid-template-columns: 1fr;
+      }
       .actions { flex-direction: column; }
       .btn { width: 100%; }
-      h1 { font-size: 2.7rem; }
+      .cta-box { flex-direction: column; align-items: flex-start; }
+      .nav { height: auto; padding: 14px 0; }
+      .nav-btn { display: none; }
     }
   </style>
 </head>
@@ -432,9 +498,9 @@
       </a>
 
       <nav class="nav-links">
-        <a href="#features">Преимущества</a>
-        <a href="#pricing">Тарифы</a>
-        <a href="#faq">FAQ</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#how">Как работает</a>
+        <a href="#balance">Пополнение</a>
         <a href="#contact">Контакты</a>
       </nav>
 
@@ -446,155 +512,189 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Обновления скинов Standoff 2</span>
-          <h1>Обновите свой стиль. Повышайте статус.</h1>
+          <span class="eyebrow">Standoff 2 • Скины и апгрейды</span>
+          <h1>Выберите скин. Закажите. Подтвердите в Telegram.</h1>
           <p class="lead">
-            Премиальные скины и персональная поддержка для игроков, которые хотят выделяться в игре и иметь более уникальный внешний вид.
-            Пополнения и топ-апы осуществляются через Telegram: <strong>@seed5558</strong>.
+            Премиальные скины и уникальные варианты для игроков, которые хотят изменить внешний вид персонажа и получить качественный сервис без лишнего шума.
+            Пополнение баланса и все подтверждения проходят через закреплённую ссылку Telegram: <strong>@seed5558</strong>.
           </p>
 
           <div class="actions">
-            <a href="#pricing" class="btn btn-primary">Смотреть тарифы</a>
-            <a href="#contact" class="btn btn-secondary">Связаться</a>
+            <a href="#catalog" class="btn btn-primary">Смотреть каталог</a>
+            <a href="#contact" class="btn btn-secondary">Написать в Telegram</a>
           </div>
 
           <div class="stats">
-            <div>
-              <strong>Быстро</strong>
-              Ответ
-            </div>
-            <div>
-              <strong>Индивидуально</strong>
-              Предложения
-            </div>
-            <div>
-              <strong>StandKnife</strong>
-              Валюта
-            </div>
+            <div><strong>Быстро</strong> Подтверждение</div>
+            <div><strong>Легально</strong> Формат</div>
+            <div><strong>StandKnife</strong> Валюта</div>
           </div>
         </div>
 
         <div class="panel showcase">
-          <div class="skin-box">
+          <div class="skin-card">
             <div class="skin-header">
-              <span>Популярный апгрейд</span>
-              <span>Лимит</span>
+              <span>Лимитированное предложение</span>
+              <span>Редко</span>
             </div>
-            <div class="drop"></div>
+            <div class="skin-image"></div>
             <div class="skin-meta">
               <div>
-                <div style="color: var(--muted); font-size: 0.8rem;">Легендарная коллекция</div>
-                <div style="font-weight: 800;">Shadow Edition</div>
+                <div style="color: var(--muted); font-size: 0.78rem;">Легендарная серия</div>
+                <div style="font-weight: 800;">Shadow Viper</div>
               </div>
-              <span class="tag">Топ выбор</span>
+              <span class="tag">Топ</span>
             </div>
-            <div class="price"><small>от</small> $59</div>
+            <div class="price"><small>от</small> $79</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="features">
+    <section>
       <div class="container">
         <div class="section-title">
-          <h2>Почему выбирают нас</h2>
-          <p>Чёткий сервис, понятное общение и качественная поддержка.</p>
+          <h2>Почему игроки выбирают нас</h2>
+          <p>Чёткий и понятный формат работы, без лишних сложностей.</p>
         </div>
 
         <div class="feature-grid">
           <article class="feature-card">
-            <div class="icon">⚡</div>
-            <h3>Быстрая поддержка</h3>
-            <p>Мгновенные ответы и простой процесс от первого сообщения до завершения.</p>
+            <div class="feature-icon">⚡</div>
+            <h3>Быстро</h3>
+            <p>Быстрая реакция и понятный порядок действий для заказа или пополнения.</p>
           </article>
 
           <article class="feature-card">
-            <div class="icon">🎯</div>
-            <h3>Подобранный выбор</h3>
-            <p>Премиальные скины и варианты обновлений, подобранные под стиль игрока.</p>
+            <div class="feature-icon">🎯</div>
+            <h3>Проверено</h3>
+            <p>Собранный каталог со стилями и вариантами, подходящими под разные запросы игроков.</p>
           </article>
 
           <article class="feature-card">
-            <div class="icon">🛡️</div>
-            <h3>Надёжный процесс</h3>
-            <p>Понятное общение, прозрачность и стабильное качество сервиса.</p>
+            <div class="feature-icon">🛡️</div>
+            <h3>Надёжно</h3>
+            <p>Подтверждение и процесс общения ведутся через Telegram, без лишнего хаоса.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="pricing">
+    <section id="catalog">
       <div class="container">
         <div class="section-title">
-          <h2>Тарифы</h2>
-          <p>Выберите вариант, который подходит именно вам.</p>
+          <h2>Каталог скинов</h2>
+          <p>Выберите вариант и напишите в Telegram для подтверждения заказа.</p>
         </div>
 
-        <div class="pricing-grid">
-          <article class="price-card">
-            <h3>Старт</h3>
-            <div class="amount">$29<span>USD</span></div>
-            <ul>
-              <li>Базовый пакет обновлений</li>
-              <li>Быстрый отклик</li>
-              <li>Персональная рекомендация</li>
-            </ul>
-            <a href="#contact" class="btn btn-secondary">Выбрать</a>
+        <div class="catalog">
+          <article class="skin-item">
+            <div class="skin-item-visual"></div>
+            <div class="skin-item-body">
+              <p class="skin-name">Astra</p>
+              <span class="skin-rarity">Rare</span>
+              <div class="skin-footer">
+                <div class="skin-cost">$19</div>
+                <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
+              </div>
+            </div>
           </article>
 
-          <article class="price-card featured">
-            <span class="best">Популярный</span>
-            <h3>Премиум</h3>
-            <div class="amount">$59<span>USD</span></div>
-            <ul>
-              <li>Поддержка премиальных скинов</li>
-              <li>Приоритетная обработка</li>
-              <li>Расширенные рекомендации</li>
-            </ul>
-            <a href="#contact" class="btn btn-primary">Выбрать</a>
+          <article class="skin-item">
+            <div class="skin-item-visual" style="background: linear-gradient(135deg, rgba(95,231,193,0.15), rgba(124,92,255,0.15)), linear-gradient(120deg, #0b0d15, #172234);"></div>
+            <div class="skin-item-body">
+              <p class="skin-name">Dread</p>
+              <span class="skin-rarity">Epic</span>
+              <div class="skin-footer">
+                <div class="skin-cost">$29</div>
+                <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
+              </div>
+            </div>
           </article>
 
-          <article class="price-card">
-            <h3>Элит</h3>
-            <div class="amount">$99<span>USD</span></div>
-            <ul>
-              <li>Индивидуальный пакет</li>
-              <li>Экспертная поддержка</li>
-              <li>Приоритетная обработка</li>
-            </ul>
-            <a href="#contact" class="btn btn-secondary">Выбрать</a>
+          <article class="skin-item">
+            <div class="skin-item-visual" style="background: linear-gradient(135deg, rgba(124,92,255,0.18), rgba(247,215,107,0.18)), linear-gradient(120deg, #111827, #0d1321);"></div>
+            <div class="skin-item-body">
+              <p class="skin-name">Obsidian</p>
+              <span class="skin-rarity">Legendary</span>
+              <div class="skin-footer">
+                <div class="skin-cost">$49</div>
+                <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="skin-item">
+            <div class="skin-item-visual" style="background: linear-gradient(135deg, rgba(247,215,107,0.2), rgba(95,231,193,0.12)), linear-gradient(120deg, #101a25, #0a111a);"></div>
+            <div class="skin-item-body">
+              <p class="skin-name">Nightfall</p>
+              <span class="skin-rarity">Mythic</span>
+              <div class="skin-footer">
+                <div class="skin-cost">$79</div>
+                <a class="mini-btn" href="https://t.me/seed5558" target="_blank" rel="noreferrer">Заказать</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="faq">
+    <section id="how">
       <div class="container">
         <div class="section-title">
-          <h2>FAQ</h2>
-          <p>Короткие ответы перед обращением.</p>
+          <h2>Как это работает</h2>
+          <p>Простой и понятный процесс без лишней сложности.</p>
         </div>
 
-        <div class="faq-grid">
-          <article class="faq-item">
-            <h4>Как оформить заказ?</h4>
-            <p>Выберите пакет и напишите нам в Telegram, чтобы начать оформление.</p>
+        <div class="steps">
+          <article class="step-card">
+            <div class="num">1</div>
+            <h3>Выбираете скин</h3>
+            <p>Просматриваете каталог и выбираете понравившийся вариант из списка.</p>
           </article>
 
-          <article class="faq-item">
-            <h4>Есть ли кастомные запросы?</h4>
-            <p>Да. Мы поможем подобрать вариант под ваш стиль и пожелания.</p>
+          <article class="step-card">
+            <div class="num">2</div>
+            <h3>Пишите в Telegram</h3>
+            <p>Нажимаете кнопку заказа и отправляете запрос через закреплённую ссылку.</p>
           </article>
 
-          <article class="faq-item">
-            <h4>Какая валюта используется?</h4>
-            <p>Игроки используют игровую валюту StandKnife. Пополнения и поддержка идут через Telegram.</p>
+          <article class="step-card">
+            <div class="num">3</div>
+            <h3>Подтверждение</h3>
+            <p>После подтверждения и пополнения баланса — сервис обрабатывается в соответствии с запросом.</p>
           </article>
+        </div>
+      </div>
+    </section>
 
-          <article class="faq-item">
-            <h4>Можно ли связаться напрямую?</h4>
-            <p>Да — напишите нам в Telegram: <strong>@seed5558</strong>.</p>
-          </article>
+    <section id="balance">
+      <div class="container">
+        <div class="section-title">
+          <h2>Пополнение баланса</h2>
+          <p>Все пополнения и подтверждения выполняются через Telegram.</p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <h3>Пополнение</h3>
+            <ul>
+              <li>Валюта: StandKnife</li>
+              <li>Подтверждение: через Telegram</li>
+              <li>Ссылка на пополнение: <a href="https://t.me/seed5558" target="_blank" rel="noreferrer" style="color: var(--primary); font-weight: 700;">@seed5558</a></li>
+              <li>Используйте закреплённую ссылку для заказа и уточнения деталей.</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>Порядок действий</h3>
+            <ul>
+              <li>Выберите скин или пакет</li>
+              <li>Нажмите кнопку “Заказать”</li>
+              <li>Напишите в Telegram</li>
+              <li>Получите подтверждение и продолжите оформление</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -603,8 +703,8 @@
       <div class="container">
         <div class="cta-box">
           <div>
-            <h3>Готовы начать?</h3>
-            <p>Напишите в Telegram для получения персонального предложения и быстрой поддержки.</p>
+            <h3>Нужен конкретный скин?</h3>
+            <p>Напишите в Telegram — подберём вариант и подскажем по балансу и оформлению.</p>
           </div>
           <a href="https://t.me/seed5558" class="btn btn-primary" target="_blank" rel="noreferrer">Связаться в Telegram</a>
         </div>
@@ -615,7 +715,7 @@
   <footer>
     <div class="container footer-row">
       <div>© 2026 vq Up Bot wq</div>
-      <div>Премиальные скины Standoff 2 • Поддержка валюты StandKnife</div>
+      <div>Standoff 2 • StandKnife • Telegram: @seed5558</div>
     </div>
   </footer>
 </body>
